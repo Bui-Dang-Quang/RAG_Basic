@@ -1,5 +1,4 @@
 .env
-requirements.txt
 notebooks/qdrant_storage/
 __pycache__/
 *.ipynb_checkpoints
