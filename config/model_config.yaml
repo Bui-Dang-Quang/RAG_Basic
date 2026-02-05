@@ -1,0 +1,46 @@
+# model.yaml for Microsoft Phi-3.5 Mini Instruct
+# Learn more at https://modelyaml.org
+model: microsoft/phi-3.5-mini-instruct
+base:
+  # This points to the standard GGUF quantization often used in LM Studio
+  - key: lmstudio-community/phi-3.5-mini-instruct-gguf
+    sources:
+      - type: huggingface
+        user: lmstudio-community
+        repo: Phi-3.5-mini-instruct-GGUF
+  # Fallback to another popular quantizer if the above isn't found
+  - key: bartowski/phi-3.5-mini-instruct-gguf
+    sources:
+      - type: huggingface
+        user: bartowski
+        repo: Phi-3.5-mini-instruct-GGUF
+
+metadataOverrides:
+  domain: llm
+  architectures:
+    - phi3
+  compatibilityTypes:
+    - gguf
+  paramsStrings:
+    - 3.8B  # Phi-3.5 Mini is approx 3.8 billion parameters
+  minMemoryUsageBytes: 2600000000 # Approx 2.6GB required for 4-bit quantization
+  contextLengths:
+    - 131072 # Phi-3.5 supports 128k context length
+  vision: false # The "instruct" version is text-only (there is a separate 'vision' model)
+  reasoning: true
+  trainedForToolUse: true # Phi-3.5 has strong tool/code capabilities
+
+config:
+  operation:
+    fields:
+      # Recommended sampling settings for Phi models
+      - key: llm.prediction.topKSampling
+        value: 40
+      - key: llm.prediction.temperature
+        value: 0.7
+      - key: llm.prediction.repeatPenalty
+        value: 1.1
+
+# Phi-3.5 is a standard instruction model, not a "Thinking" model (like DeepSeek R1),
+# so we remove the "Enable Thinking" toggle to avoid confusion.
+customFields: []

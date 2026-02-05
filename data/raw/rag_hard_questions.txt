@@ -1,0 +1,24 @@
+===================================================================
+RAG EVALUATION: HARD QUESTIONS (STATISTICAL & ARCHITECTURAL SPECS)
+Source Document: 2405.17247v1.pdf (An Introduction to VLM)
+===================================================================
+
+[Test Case 1: Zero-Shot Performance]
+Question: What was the specific zero-shot classification accuracy attained by the ResNet-101 CLIP model, and which supervised model did it match?
+Answer: The ResNet-101 CLIP model attained 76.2% zero-shot classification accuracy, matching the performance of a supervised ResNet model.
+
+[Test Case 2: Training Compute Resources]
+Question: How many GPUs and how much time were required for the first round of training for MiniGPT-4?
+Answer: The first round of training for MiniGPT-4 required only four A100 GPUs for around ten hours.
+
+[Test Case 3: Technical Specifications - Tokenizer]
+Question: What are the specific tokenization parameters (image size, token count, and vocabulary size) used by the CM3Leon image tokenizer borrowed from Gafni et al.?
+Answer: It encodes a 256x256 image into 1024 tokens from a vocabulary of 8192.
+
+[Test Case 4: Fine-Tuning Efficiency]
+Question: When using the weight-sharing technique with VL-adapter, what specific percentage of total parameters requires updating for video-text tasks?
+Answer: For video-text tasks, only 3.39% of the total parameters require updating.
+
+[Test Case 5: Benchmark Improvement]
+Question: On the MMHAL-BENCH, by what percentage does LLAVA-RLHF outperform baselines, and what is the specific focus of this benchmark?
+Answer: LLAVA-RLHF outperforms baselines by 60% on MMHAL-BENCH, which has a special focus on penalizing hallucinations.
